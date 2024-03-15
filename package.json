@@ -1,0 +1,22 @@
+{
+  "name": "product-filterig",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mika1407/product-filterig.git"
+  },
+  "author": "Mika Tiihonen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mika1407/product-filterig/issues"
+  },
+  "homepage": "https://github.com/mika1407/product-filterig#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
