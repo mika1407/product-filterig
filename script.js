@@ -78,7 +78,7 @@ const productsWrapper = document.getElementById('products-wrapper');
 const checkboxes = document.querySelectorAll('.check');
 const filtersContainer = document.getElementById('filters-container');
 const searchInput = document.getElementById('search');
-//const cartButton = document.getElementById('cartButton');
+const cartButton = document.getElementById('cartButton');
 const cartCount = document.getElementById('cart-count');
 
 // Initialize cart item count
@@ -108,13 +108,40 @@ function createProductElement(product) {
       alt="${product.name}"
       class="w-full h-full object-cover"
     />
-    <span
-      class="status bg-black text-white absolute bottom-0 left-0 right-0 text-center py-2 translate-y-full transition group-hover:translate-y-0"
-      >Add To Cart</span
-    >
+    <button
+      class="status bg-black text-white absolute bottom-0 left-0 right-0 text-center py-2 translate-y-full transition group-hover:translate-y-0">Add To Cart</button>
   </div>
   <p class="text-xl">${product.name}</p>
   <strong>€${product.price.toLocaleString()}</strong>`;
 
+  productElement.querySelector('.status').addEventListener('click', updateCart);
+
   return productElement;
+}
+
+// Ad or remove item from cart
+function updateCart(e) {
+  const statusEl = e.target;
+  console.log(statusEl)
+
+  if (statusEl.classList.contains('added')) {
+    // Remove from cart
+    statusEl.classList.remove('added');
+    statusEl.innerText = 'Add To Cart';
+    statusEl.classList.remove('bg-red-600');
+    statusEl.classList.add('bg-gray-800');
+
+    cartItemCount--;
+  } else {
+    // Add to cart
+    statusEl.classList.add('added');
+    statusEl.innerText = 'Remove From Cart';
+    statusEl.classList.remove('bg-gray-800');
+    statusEl.classList.add('bg-red-600');
+
+    cartItemCount++;
+  }
+
+  // Update cart item count
+  cartCount.innerText = cartItemCount.toString();
 }
